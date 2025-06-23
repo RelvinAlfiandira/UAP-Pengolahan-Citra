@@ -1,0 +1,6 @@
+flask
+opencv-python
+scikit-image
+scikit-learn
+numpy
+pandas

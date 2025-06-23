@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deteksi Keaslian Uang</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h2>Upload Gambar Uang (dengan UV)</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Klasifikasikan">
+    </form>
+
+    {% if original %}
+        <h3>Citra Asli</h3>
+        <img src="{{ original }}" width="400">
+        <h3>Citra Green Channel</h3>
+        <img src="{{ green }}" width="400">
+    {% endif %}
+
+    {% if features %}
+        <h3>Ekstraksi Fitur GLCM</h3>
+        <ul>
+            <li>ASM: {{ features[0] }}</li>
+            <li>IDM: {{ features[1] }}</li>
+            <li>Kontras: {{ features[2] }}</li>
+            <li>Korelasi: {{ features[3] }}</li>
+        </ul>
+    {% endif %}
+
+    {% if result %}
+        <h2>Hasil Deteksi: <strong>{{ result }}</strong></h2>
+    {% endif %}
+</body>
+</html>
